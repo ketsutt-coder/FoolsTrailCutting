@@ -1,4 +1,9 @@
-# v1.0.2
+# v1.0.3
+- Update to latest Geode version.
+- Added iOS support.
+- Attempt to fix the trail *sometimes* remaining active when it shouldn't.
+
+## v1.0.2
 - Added Mac support (thx [Erymanthus!](https://github.com/RayDeeUx))
 
 ## v1.0.1
