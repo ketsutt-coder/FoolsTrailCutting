@@ -31,19 +31,21 @@ class $modify(EpicTrailMod, CCMotionStreak) {
     virtual void update(float delta) {
         CCMotionStreak::update(delta);
 
+        auto fields = m_fields.self();
+
         if (streakStates[this]) {
-            m_fields->elapsedTime += delta;
+            fields->elapsedTime += delta;
 
-            if (m_fields->elapsedTime >= cutFreq) {
-                m_fields->elapsedTime -= cutFreq;
+            if (fields->elapsedTime >= cutFreq) {
+                fields->elapsedTime -= cutFreq;
 
-                if (m_fields->isCutting) {
+                if (fields->isCutting) {
                     this->stopStroke();
                 } else {
                     this->resumeStroke();
                 }
 
-                m_fields->isCutting = !m_fields->isCutting;
+                fields->isCutting = !fields->isCutting;
             }
         }
     }
@@ -75,6 +77,7 @@ class $modify(LePlayerObjete, PlayerObject) {
         if (!m_isShip && !m_isSwing && !m_isDart && !m_isBird) {
             if (m_regularTrail) {
                 auto streak = static_cast<CCMotionStreak*>(m_regularTrail);
+                streak->stopStroke();
                 if (streak) {
                     streakStates[streak] = false;
                     shouldCallOriginal = true;
