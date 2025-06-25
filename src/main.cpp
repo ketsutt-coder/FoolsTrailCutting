@@ -77,6 +77,7 @@ class $modify(LePlayerObjete, PlayerObject) {
         if (!m_isShip && !m_isSwing && !m_isDart && !m_isBird) {
             if (m_regularTrail) {
                 auto streak = static_cast<CCMotionStreak*>(m_regularTrail);
+                // idk why i did this but let's see how it behaves
                 streak->stopStroke();
                 if (streak) {
                     streakStates[streak] = false;
